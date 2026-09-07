@@ -21,6 +21,12 @@ jobs:
           unzip -o Van-Supply-Admin-GitHub-Free-APK.zip -d extracted
           cp -a extracted/vanandroid-final/. .
 
+      - name: Enable BuildConfig
+        run: |
+          sed -i '/android {/a\    buildFeatures {\
+          \    buildConfig true\
+          \    }' android/app/build.gradle
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
